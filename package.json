@@ -4,8 +4,8 @@
   "window": {
     "show": false,
     "frame": true,
-    "position": "center",
+    "position": "bottom",
     "width": 500,
-    "height": 500
+    "height": 400
   }
 }
