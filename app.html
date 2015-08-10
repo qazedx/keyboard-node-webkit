@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Camera Test</title>
-    <link rel="stylesheet" href="app.css">
-    <script src="jquery.js"></script>
-    <script src="app.js"></script>
-  </head>
-  <body>
-    <video id="camera" autoplay> </video>
-  </body>
+
+<head>
+  <title>Camera Test</title>
+
+  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="app.css">
+  <script src="jquery.js"></script>
+  <script src="app.js"></script>
+  <script src="typeahead.js"></script>
+  <script type="text/javascript">
+    // var angular = require('angular');
+  </script>
+</head>
+
+<body>
+  <script type="text/ng-template" id="customTemplate.html">
+    <a>
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+    </a>
+  </script>
+  <h4>Custom templates for results</h4>
+  <pre>Model: {{customSelected | json}}</pre>
+  <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+
+  <video id="camera" autoplay> </video>
+</body>
+
 </html>
