@@ -1,4 +1,7 @@
-var angular = require('angular');
+// var angular = require('./node_modules/angular/angular.min.js');
+// var angularui = require('./node_modules/angular-ui-bootstrap');
+// var angular = require('angular');
+// import './node_modules/angular-ui-bootstrap';
 angular.module('ui.bootstrap.demo', ['ngAnimate', 'ui.bootstrap']);
 angular.module('ui.bootstrap.demo').controller('TypeaheadCtrl', function($scope, $http) {
 

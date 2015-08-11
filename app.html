@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ui.bootstrap.demo">
 
 <head>
   <title>Camera Test</title>
+  <!-- <script src="./node_modules/angular/angular.min.js"></script> -->
+  <script src="./node_modules/angular/angular.min.js"></script>
+  <script src="./lib/angular-animate.js"></script>
+  <script src="./node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
+  <link href="./lib/ui-bootstrap-tpls-0.13.3.js" rel="stylesheet">
 
-  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="app.css">
   <script src="jquery.js"></script>
   <script src="app.js"></script>
   <script src="typeahead.js"></script>
-  <script type="text/javascript">
-    // var angular = require('angular');
-  </script>
+  <link href="./lib/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
   <script type="text/ng-template" id="customTemplate.html">
     <a>
+      <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
       <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
     </a>
   </script>
-  <h4>Custom templates for results</h4>
-  <pre>Model: {{customSelected | json}}</pre>
-  <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+  <div class='container-fluid' ng-controller="TypeaheadCtrl">
 
-  <video id="camera" autoplay> </video>
+    <h4>Static arrays</h4>
+    <pre>Model: {{selected | json}}</pre>
+    <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control">
+
+    <!-- <h4>Asynchronous results</h4>
+    <pre>Model: {{asyncSelected | json}}</pre>
+    <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> No Results Found
+    </div> -->
+
+    <h4>Custom templates for results</h4>
+    <pre>Model: {{customSelected | json}}</pre>
+    <input type="text" ng-model="customSelected" placeholder="Custom template" typeahead="state as state.name for state in statesWithFlags | filter:{name:$viewValue}" typeahead-template-url="customTemplate.html" class="form-control">
+  </div>
+  <video style="margin-top:20px" id="camera" autoplay> </video>
 </body>
 
 </html>
