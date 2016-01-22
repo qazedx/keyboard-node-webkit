@@ -1,5 +1,9 @@
 {
   "name": "nw-demo",
+  "permissions": [
+    "http://www.google.com/",
+    "http://*/"
+    ],
   "main": "app.html",
   "window": {
     "show": false,
@@ -7,5 +11,11 @@
     "position": "bottom",
     "width": 400,
     "height": 500
+  },
+  "dependencies": {
+    "express": "~4.9.x",
+    "angular-ui-bootstrap": "0.13.3",
+    "angular": "1.4.3",
+    "bootstrap": "3.3.5"
   }
 }
